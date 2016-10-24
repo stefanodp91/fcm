@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="floating_contextual_horizontal_margin">16dp</dimen>
+    <dimen name="floating_contextual_vertical_margin">16dp</dimen>
+    <dimen name="floating_contextual_padding_normal">16dp</dimen>
+    <dimen name="floating_contextual_item_horizontal_margin">16dp</dimen>
+    <dimen name="floating_contextual_item_vertical_margin">22dp</dimen>
+</resources>
