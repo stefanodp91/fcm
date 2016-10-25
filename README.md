@@ -9,7 +9,7 @@
 
 ## Sample ##
 
-A demo app is provided in the source.
+A demo app is provided in the [sample](https://github.com/stefanodp91/fcm/tree/master/sample)
 
 ---
 
