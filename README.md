@@ -8,8 +8,9 @@
 
 
 ## Sample ##
+[![get_it](http://evolvex.it/mobyx/images/nav/gplay-blk.png)](https://play.google.com/store/apps/details?id=org.bitbucket.stefanodp91.sample)
 
-A demo app is provided in the [sample](https://github.com/stefanodp91/fcm/tree/master/sample)
+Sample source can be found [here](https://github.com/stefanodp91/fcm/tree/master/sample)
 
 ---
 
