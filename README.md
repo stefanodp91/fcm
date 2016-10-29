@@ -34,7 +34,7 @@ dependencies {
 
     ...
     
-    compile 'org.bitbucket.stefanodp91:fcm:0.0.1' // add this
+    compile 'org.bitbucket.stefanodp91:fcm:0.1.0' // add this
 }
 ```
 
@@ -129,6 +129,58 @@ Use:
       .build();
 ```
 
+It can choose the less / more icon's color:
+```Java
+ new FloatingContextualMenu.Builder(getApplicationContext())
+                        .add(new FloatingContextualItem.Builder("Reply", onReplyClickListener)
+                                .icon(R.drawable.ic_reply_white_24dp)
+                                .visible(true)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Copy", onCopyClickListener)
+                                .icon(R.drawable.ic_content_copy_white_24dp)
+                                .visible(true)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Forward", onForwardClickListener)
+                                .visible(true)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Select all", onSelectAllClickListener)
+                                .visible(false)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Translate", onTranslateClickListener)
+                                .visible(true)
+                                .build())
+                        .children(3)
+                        .type(Type.TEXT)
+                        .moreColor(R.color.grey_500) // change the more / less icon color
+      .build();
+```
+
+and the menu's background color
+```Java
+ new FloatingContextualMenu.Builder(getApplicationContext())
+                        .add(new FloatingContextualItem.Builder("Reply", onReplyClickListener)
+                                .icon(R.drawable.ic_reply_white_24dp)
+                                .visible(true)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Copy", onCopyClickListener)
+                                .icon(R.drawable.ic_content_copy_white_24dp)
+                                .visible(true)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Forward", onForwardClickListener)
+                                .visible(true)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Select all", onSelectAllClickListener)
+                                .visible(false)
+                                .build())
+                        .add(new FloatingContextualItem.Builder("Translate", onTranslateClickListener)
+                                .visible(true)
+                                .build())
+                        .children(3)
+                        .type(Type.TEXT)
+                        .moreColor(R.color.grey_500) 
+                        .backgroundColor(R.color.white) // background color
+      .build();
+```
  
 ### FloatingContextualItem.Builder customization ###
 
@@ -169,6 +221,24 @@ new FloatingContextualItem.Builder(mItemTitle, mItemClickListener)
       .build()
 ```
 
+you can choose a color for the title
+```Java
+new FloatingContextualItem.Builder(mItemTitle, mItemClickListener)
+      .icon(R.drawable.ic_reply_white_24dp)
+      .visible(true) 
+      .textColor(R.color.black) // title color
+      .build()
+```
+
+and for the icon
+```Java
+new FloatingContextualItem.Builder(mItemTitle, mItemClickListener)
+      .icon(R.drawable.ic_reply_white_24dp)
+      .visible(true) 
+      .textColor(R.color.black) 
+      .iconColor(R.color.black)  // icon color
+      .build()
+```
 ---
 
 ## Credits ##
