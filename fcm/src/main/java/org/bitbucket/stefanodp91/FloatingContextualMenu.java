@@ -2,6 +2,7 @@ package org.bitbucket.stefanodp91;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,12 @@ public class FloatingContextualMenu extends PopupWindow {
     private LinearLayout mFloatingContextualMenuContainer; // the container of the itemList items
     private View mViewMoreContainer; // the "more" or "less" button
 
+    @ColorRes
+    private int moreColorId = R.color.grey_700; // item more/less color
+
+    @ColorRes
+    private int backgroundColorId = R.color.white; //window background color
+
     public FloatingContextualMenu(Builder builder) {
         this.context = builder.context;
 
@@ -44,9 +50,19 @@ public class FloatingContextualMenu extends PopupWindow {
             this.anchor = builder.anchor;
         }
 
-        // default number of children
+        // number of children
         if (builder.children != 0) {
             this.DISPLAY_CHILDREN_NUMBER = builder.children;
+        }
+
+        // more/less icon color
+        if (builder.moreColorId != 0) {
+            this.moreColorId = builder.moreColorId;
+        }
+
+        // background icon color
+        if (builder.backgroundColorId != 0) {
+            this.backgroundColorId = builder.backgroundColorId;
         }
 
         this.mItemList = builder.mItemList;
@@ -92,54 +108,28 @@ public class FloatingContextualMenu extends PopupWindow {
         inflateWindowLayout(context); // inflate a custom layout
         window.setFocusable(true);
         window.setOutsideTouchable(true);  // allow to dismiss the popup
+
         // popup size
         window.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
         window.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
         // set a custom background
         window.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.shadow));
+
+        Drawable backgroundDrawable = Utils.changeDrawableColor(context, backgroundColorId, R.drawable.shadow);
     }
 
     // inflate the popup layout
     private void inflateWindowLayout(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         rootView = inflater.inflate(R.layout.floating_contextual_menu, null);
+
+        if(backgroundColorId != 0) {
+            rootView.setBackgroundColor(context.getResources().getColor(backgroundColorId));
+        }
+
         window.setContentView(rootView);
     }
-
-//    // add children inserted from user
-//    private void addChildren() {
-//        // retrieve the container view
-//        mFloatingContextualMenuContainer = (LinearLayout) rootView.findViewById(R.id.contextual_menu);
-//
-//        // check if there are items
-//        if (mItemList.size() > 0) {
-//            // if there are more than DISPLAY_CHILDREN_NUMBER children show a "more" button
-//            if (mItemList.size() > DISPLAY_CHILDREN_NUMBER) {
-//                // init the "more button"
-//                mViewMoreContainer = LayoutInflater.from(context).inflate(R.layout.floating_contextual_more_item, null);
-//                changeMoreViewIcon();
-//                addChildrenWithMoreButton();
-//            } else if (mItemList.size() == DISPLAY_CHILDREN_NUMBER) {
-//                addCustomRangeChildren(0, mItemList.size(), HORIZONTAL);
-//            } else {
-//                addCustomRangeChildren(0, mItemList.size(), HORIZONTAL);
-//            }
-//        } else {
-//            Log.e(TAG, "list is empty");
-//            throw new IllegalStateException("YOU HAVE TO ADD AT LEAST ONE FloatingActionItem");
-//        }
-//    }
-//
-//
-//    // a custom range of children
-//    private void addCustomRangeChildren(int start, int limit, int orientation) {
-//        for (int i = start; i < limit; i++) {
-//            FloatingContextualItem item = mItemList.get(i);
-//            if (item.isVisible()) {
-//                Utils.addChild(context, item, mFloatingContextualMenuContainer, type, orientation);
-//            }
-//        }
-//    }
 
 
     // add children inserted from user
@@ -242,7 +232,7 @@ public class FloatingContextualMenu extends PopupWindow {
         }
 
         Drawable drawable = Utils.changeDrawableColor(context,
-                R.color.contextual_menu_icon_color,
+                moreColorId,
                 drawableId);
         ImageView mMore = (ImageView) mViewMoreContainer.findViewById(R.id.more);
         mMore.setBackground(drawable);
@@ -267,6 +257,10 @@ public class FloatingContextualMenu extends PopupWindow {
         private View anchor;
         private Type type = Type.BOTH;
         private int children;
+        @ColorRes
+        private int moreColorId = R.color.grey_700;
+        @ColorRes
+        private int backgroundColorId = R.color.white;
         private List<FloatingContextualItem> mItemList;
 
         public Builder(Context context) {
@@ -281,6 +275,16 @@ public class FloatingContextualMenu extends PopupWindow {
 
         public Builder children(int children) {
             this.children = children;
+            return this;
+        }
+
+        public Builder moreColor(@ColorRes int moreColorId) {
+            this.moreColorId = moreColorId;
+            return this;
+        }
+
+        public Builder backgroundColor(@ColorRes int backgroundColorId) {
+            this.backgroundColorId = backgroundColorId;
             return this;
         }
 

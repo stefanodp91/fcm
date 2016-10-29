@@ -1,5 +1,6 @@
 package org.bitbucket.stefanodp91;
 
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.view.View;
 
@@ -11,7 +12,12 @@ public class FloatingContextualItem {
     private String name; // item name
     private View.OnClickListener action; // item action on click listener
     @DrawableRes
-    private int iconId = R.drawable.ic_error; // item ico
+    private int iconId = R.drawable.ic_error; // item icon
+    private
+    @ColorRes
+    int iconColorId = R.color.grey_700; // item icon color
+    @ColorRes
+    private int textColorId = R.color.grey_700; // item text color
     private boolean visible = false; // item visibility
 
     public FloatingContextualItem(Builder builder) {
@@ -21,6 +27,16 @@ public class FloatingContextualItem {
         // default icon
         if (builder.iconId != 0) {
             this.iconId = builder.iconId;
+        }
+
+        // default icon color
+        if (builder.iconColorId != 0) {
+            this.iconColorId = builder.iconColorId;
+        }
+
+        // default icon color
+        if (builder.textColorId != 0) {
+            this.textColorId = builder.textColorId;
         }
 
         this.visible = builder.visible;
@@ -51,6 +67,24 @@ public class FloatingContextualItem {
         this.iconId = iconId;
     }
 
+    @ColorRes
+    public int getIconColorId() {
+        return iconColorId;
+    }
+
+    public void setIconColorId(@ColorRes int iconColorId) {
+        this.iconColorId = iconColorId;
+    }
+
+    @ColorRes
+    public int getTextColorId() {
+        return textColorId;
+    }
+
+    public void setTextColorId(@ColorRes int textColorId) {
+        this.textColorId = textColorId;
+    }
+
     public boolean isVisible() {
         return visible;
     }
@@ -64,6 +98,13 @@ public class FloatingContextualItem {
         private View.OnClickListener action;
         @DrawableRes
         private int iconId = R.drawable.ic_error;
+
+        @ColorRes
+        private int iconColorId = R.color.grey_700;
+
+        @ColorRes
+        private int textColorId = R.color.grey_700;
+
         private boolean visible = false;
 
         public Builder(String name, View.OnClickListener action) {
@@ -73,6 +114,16 @@ public class FloatingContextualItem {
 
         public Builder icon(@DrawableRes int iconId) {
             this.iconId = iconId;
+            return this;
+        }
+
+        public Builder iconColor(@ColorRes int iconColorId) {
+            this.iconColorId = iconColorId;
+            return this;
+        }
+
+        public Builder textColor(@ColorRes int textColorId) {
+            this.textColorId = textColorId;
             return this;
         }
 

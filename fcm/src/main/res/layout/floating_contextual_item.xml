@@ -14,6 +14,5 @@
         android:id="@+id/contextual_action_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAllCaps="true"
-        android:textColor="@color/contextual_menu_text_color" />
+        android:textAllCaps="true" />
 </LinearLayout>

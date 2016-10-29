@@ -98,6 +98,7 @@ class Utils {
         // set title
         TextView mTitleView = (TextView) child.findViewById(R.id.contextual_action_title);
         mTitleView.setText(item.getName());
+        mTitleView.setTextColor(context.getResources().getColor(item.getTextColorId()));
 
         // set listener
         child.setOnClickListener(item.getAction());
@@ -106,7 +107,7 @@ class Utils {
         ImageView mIconView = (ImageView) child.findViewById(R.id.contextual_action_icon);
         if (item.getIconId() != 0) {
             Drawable drawable = Utils.changeDrawableColor(context,
-                    R.color.contextual_menu_icon_color,
+                    item.getIconColorId(),
                     item.getIconId());
             mIconView.setBackground(drawable);
             mIconView.setVisibility(View.VISIBLE);

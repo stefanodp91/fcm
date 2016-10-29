@@ -2,6 +2,7 @@ package org.bitbucket.stefanodp91.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +26,18 @@ public class MainActivity extends AppCompatActivity {
     private boolean isSelectAllVisible = true;
     private boolean isTranslateVisible = true;
     private int visibleItems = 2;
-    private Type type = Type.TEXT;
+    private Type type = Type.BOTH;
+    @ColorRes
+    private int backgroundColor;
+
+    @ColorRes
+    private int moreLessColor;
+
+    @ColorRes
+    private int iconsColor;
+
+    @ColorRes
+    private int titlesColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
             activitySettingsIntent.putExtra(SettingsActivity.EXTRA_SELECT_ALL, isSelectAllVisible);
             activitySettingsIntent.putExtra(SettingsActivity.EXTRA_TRANSLATE, isTranslateVisible);
             activitySettingsIntent.putExtra(SettingsActivity.EXTRA_TYPE, type);
+            activitySettingsIntent.putExtra(SettingsActivity.EXTRA_BACKGROUND_COLOR, backgroundColor);
+            activitySettingsIntent.putExtra(SettingsActivity.EXTRA_MORE_LESS_COLOR, moreLessColor);
+            activitySettingsIntent.putExtra(SettingsActivity.EXTRA_ICONS_COLOR, iconsColor);
+            activitySettingsIntent.putExtra(SettingsActivity.EXTRA_TITLES_COLOR, titlesColor);
             startActivityForResult(activitySettingsIntent, REQUEST_ACTIVITY_SETTINGS);
         }
 
@@ -148,6 +164,10 @@ public class MainActivity extends AppCompatActivity {
             isSelectAllVisible = data.getExtras().getBoolean(SettingsActivity.EXTRA_SELECT_ALL);
             isTranslateVisible = data.getExtras().getBoolean(SettingsActivity.EXTRA_TRANSLATE);
             type = (Type) data.getExtras().getSerializable(SettingsActivity.EXTRA_TYPE);
+            backgroundColor = data.getExtras().getInt(SettingsActivity.EXTRA_BACKGROUND_COLOR);
+            moreLessColor = data.getExtras().getInt(SettingsActivity.EXTRA_MORE_LESS_COLOR);
+            iconsColor = data.getExtras().getInt(SettingsActivity.EXTRA_ICONS_COLOR);
+            titlesColor = data.getExtras().getInt(SettingsActivity.EXTRA_TITLES_COLOR);
             createBuilder();
         }
     }
@@ -158,22 +178,34 @@ public class MainActivity extends AppCompatActivity {
                 new FloatingContextualMenu.Builder(getApplicationContext())
                         .add(new FloatingContextualItem.Builder("Reply", onReplyClickListener)
                                 .icon(R.drawable.ic_reply)
+                                .iconColor(iconsColor)
+                                .textColor(titlesColor)
                                 .visible(isReplyVisible)
                                 .build())
                         .add(new FloatingContextualItem.Builder("Copy", onCopyClickListener)
                                 .icon(R.drawable.ic_copy)
+                                .iconColor(iconsColor)
+                                .textColor(titlesColor)
                                 .visible(isCopyVisible)
                                 .build())
                         .add(new FloatingContextualItem.Builder("Forward", onForwardClickListener)
+                                .iconColor(iconsColor)
+                                .textColor(titlesColor)
                                 .visible(isForwardVisible)
                                 .build())
                         .add(new FloatingContextualItem.Builder("Select all", onSelectAllClickListener)
+                                .iconColor(iconsColor)
+                                .textColor(titlesColor)
                                 .visible(isSelectAllVisible)
                                 .build())
                         .add(new FloatingContextualItem.Builder("Translate", onTranslateClickListener)
+                                .iconColor(iconsColor)
+                                .textColor(titlesColor)
                                 .visible(isTranslateVisible)
                                 .build())
                         .children(visibleItems)
+                        .moreColor(moreLessColor)
+                        .backgroundColor(backgroundColor)
                         .type(type);
     }
 }
