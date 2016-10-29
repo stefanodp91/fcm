@@ -2,8 +2,8 @@
 
 ![screen1](https://imageshack.us/a/img922/7269/D61aYj.gif "")
 ![screen2](https://imageshack.us/a/img921/3439/UvoZwI.gif "")
-![screen3](https://imageshack.us/a/img923/1019/0dOlem.gif "")
-![screen4](https://imageshack.com/a/img921/7407/I16Kv7.gif "")
+![screen3](https://imageshack.us/a/img921/7407/I16Kv7.gif "")
+![screen4](https://imageshack.us/a/img923/1019/0dOlem.gif "")
 
 ---
 
