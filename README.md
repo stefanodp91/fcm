@@ -1,8 +1,9 @@
 ## Screenshots ##
 
-![screen1](http://imagizer.imageshack.us/a/img921/8683/lfJ2uQ.gif "")
-![screen2](http://imageshack.com/a/img921/3300/OHSSvm.gif "")
-![screen3](http://imageshack.com/a/img924/3153/ZURfGu.gif "")
+![screen1](https://imageshack.us/a/img922/7269/D61aYj.gif "")
+![screen2](https://imageshack.us/a/img921/3439/UvoZwI.gif "")
+![screen3](https://imageshack.us/a/img923/1019/0dOlem.gif "")
+![screen4](https://imageshack.com/a/img921/7407/I16Kv7.gif "")
 
 ---
 
