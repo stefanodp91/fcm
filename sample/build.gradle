@@ -26,6 +26,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile rootProject.ext.supportAppCompat
 
-     compile 'org.bitbucket.stefanodp91:fcm:0.1.0'
-    // compile project (":fcm") // development only
+//     compile 'org.bitbucket.stefanodp91:fcm:0.1.0'
+     compile project (":fcm") // development only
 }

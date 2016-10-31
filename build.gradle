@@ -31,8 +31,8 @@ ext {
     minSdkVersion = 16
     targetSdkVersion = 25
 
-    versionCode = 2
-    versionName =  "0.1.0"
+    versionCode = 3
+    versionName =  "0.1.1"
 
     supportAppCompat = 'com.android.support:appcompat-v7:25.+'
     supportDesign = 'com.android.support:design:25.+'

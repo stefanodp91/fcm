@@ -1,8 +1,3 @@
 <resources>
     <string name="app_name">FloatingContextualMenu</string>
-
-    <string name="long_text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua.
-    </string>
 </resources>

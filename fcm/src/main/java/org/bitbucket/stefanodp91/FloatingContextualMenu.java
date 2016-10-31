@@ -1,9 +1,11 @@
 package org.bitbucket.stefanodp91;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -41,6 +43,9 @@ public class FloatingContextualMenu extends PopupWindow {
 
     @ColorRes
     private int backgroundColorId = R.color.white; //window background color
+
+    //The "x" and "y" position of the "Show Button" on screen.
+    Point p;
 
     public FloatingContextualMenu(Builder builder) {
         this.context = builder.context;
@@ -92,7 +97,39 @@ public class FloatingContextualMenu extends PopupWindow {
     }
 
     public void show() {
-        window.showAsDropDown(anchor, -5, 0);
+//        int xoff = -5; //default -5
+//        int yoff = 0; // default 0
+//        window.showAsDropDown(anchor, xoff, yoff);
+
+        int[] location = new int[2];
+        // Get the x, y location and store it in the location[] array
+        // location[0] = x, location[1] = y.
+        anchor.getLocationOnScreen(location);
+
+        //Initialize the Point with x, and y positions
+        p = new Point();
+        p.x = location[0];
+        p.y = location[1];
+
+        // Some offset to align the popup a bit to the right, and a bit down, relative to button's position.
+        int OFFSET_X = 0;
+        int OFFSET_Y = 30;
+
+        int[] anchorDims = new int[2];
+        anchorDims[0] = anchor.getWidth();
+        anchorDims[1] = anchor.getHeight();
+        Log.d(TAG, "w = " + anchorDims[0] + ", h = " + anchorDims[1]);
+        Log.d(TAG, "px = " + p.x + ", py = " + p.y);
+
+        // Displaying the popup at the specified location, + offsets.
+        if (anchorDims[1] >= 200) {
+            window.showAtLocation(anchor, Gravity.CENTER, p.x + OFFSET_X, anchorDims[1] - p.y);
+        } else {
+            window.showAtLocation(anchor, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
+        }
+
+//        // Displaying the popup at the specified location, + offsets.
+//        window.showAtLocation(anchor, Gravity.NO_GRAVITY, p.x + OFFSET_X, p.y + OFFSET_Y);
     }
 
     @Override
@@ -116,7 +153,7 @@ public class FloatingContextualMenu extends PopupWindow {
         // set a custom background
         window.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.shadow));
 
-        Drawable backgroundDrawable = Utils.changeDrawableColor(context, backgroundColorId, R.drawable.shadow);
+//        Drawable backgroundDrawable = Utils.changeDrawableColor(context, backgroundColorId, R.drawable.shadow);
     }
 
     // inflate the popup layout
@@ -124,7 +161,7 @@ public class FloatingContextualMenu extends PopupWindow {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         rootView = inflater.inflate(R.layout.floating_contextual_menu, null);
 
-        if(backgroundColorId != 0) {
+        if (backgroundColorId != 0) {
             rootView.setBackgroundColor(context.getResources().getColor(backgroundColorId));
         }
 
@@ -199,18 +236,6 @@ public class FloatingContextualMenu extends PopupWindow {
         }
     }
 
-//    // set the vertical layout
-//    private void setVerticalLayout() {
-//        mFloatingContextualMenuContainer.removeAllViews(); // remove all views
-//        // add children
-//        addCustomRangeChildren(0, mItemList.size(), VERTICAL);
-//
-//        // add view less if there are at least DISPLAY_CHILDREN_NUMBER children
-//        if (mItemList.size() > DISPLAY_CHILDREN_NUMBER &&
-//                mFloatingContextualMenuContainer.getChildCount() >= DISPLAY_CHILDREN_NUMBER) {
-//            Utils.addViewWithMargin(context, mFloatingContextualMenuContainer, mViewMoreContainer, VERTICAL);
-//        }
-//    }
 
     // set the vertical layout
     private void setVerticalLayout() {
