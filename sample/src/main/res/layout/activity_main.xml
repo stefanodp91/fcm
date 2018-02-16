@@ -3,12 +3,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/floating_contextual_vertical_margin"
-    android:paddingLeft="@dimen/floating_contextual_horizontal_margin"
+    android:paddingEnd="@dimen/floating_contextual_horizontal_margin"
     android:paddingRight="@dimen/floating_contextual_horizontal_margin"
+    android:paddingStart="@dimen/floating_contextual_horizontal_margin"
     android:paddingTop="@dimen/floating_contextual_vertical_margin">
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -22,25 +24,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="CENTER"
+                android:text="@string/activity_main_center_label"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <TextView
                 android:id="@+id/tv_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:layout_marginTop="@dimen/floating_contextual_vertical_margin"
-                android:text="LEFT"
+                android:text="@string/activity_main_left_label"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <TextView
                 android:id="@+id/tv_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="@dimen/floating_contextual_vertical_margin"
-                android:text="RIGHT"
+                android:text="@string/activity_main_right_label"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <TextView
@@ -51,5 +53,5 @@
                 android:text="@string/long_text"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

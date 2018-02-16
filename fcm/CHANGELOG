@@ -1,14 +1,19 @@
-### 0.0.1 ###
-- item's text
-- item's icon
-- items's visibility
-- menu can show text, icon or both
 
-### 0.1.0 ###
+# v.0.1.2: b.: 4
+- updated google dependecies
+- updated gradle plugin
+
+# v.0.1.1: b.: 3
+- bugifx fcm position with tall anchors
+
+# v.0.1.0: b.: 2
 - color for item's text
 - color for item's icon
 - style for menu's background
 - style for menu's less/more icon
 
-### 0.1.1 ###
-- bugifx fcm position with tall anchors
+# v.0.0.1: b.: 1
+- item's text
+- item's icon
+- items's visibility
+- menu can show text, icon or both

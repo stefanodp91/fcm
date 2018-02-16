@@ -24,4 +24,20 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.
     </string>
+    <string name="activity_main_center_label">CENTER</string>
+    <string name="activity_main_left_label">LEFT</string>
+    <string name="activity_main_right_label">RIGHT</string>
+    <string name="activity_settings_what_to_show_label">What to show?</string>
+    <string name="activity_settings_reply_visible_label">Reply visible</string>
+    <string name="activity_settings_copy_visible_label">Copy visible</string>
+    <string name="activity_settings_forward_visible_label">Forward visible</string>
+    <string name="activity_settings_select_all_visible_label">Select all visible</string>
+    <string name="activity_settings_translate_visible_label">Translate visible</string>
+    <string name="activity_settings_icon_and_text_label">Icon and text</string>
+    <string name="activity_settings_customize_your_color_label">Customize your color</string>
+    <string name="activity_settings_type_label">Type</string>
+    <string name="activity_settings_background_color_label">Background color</string>
+    <string name="activity_settings_more_less_icon_color_label">More/Less icon color</string>
+    <string name="activity_settings_icons_color_label">Icons color</string>
+    <string name="activity_settings_titles_color_label">Titles color</string>
 </resources>
