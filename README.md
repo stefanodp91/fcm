@@ -35,7 +35,7 @@ dependencies {
 
     ...
     
-    compile 'org.bitbucket.stefanodp91:fcm:0.1.1' // add this
+    compile 'org.bitbucket.stefanodp91:fcm:0.1.2' // add this
 }
 ```
 
